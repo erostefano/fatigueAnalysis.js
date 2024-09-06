@@ -111,6 +111,7 @@ async function hyperParamTuning() {
                 const performance = {
                     activation,
                     dropoutRate,
+                    learningRate: learningRate.toString(),
                     trainingLoss: history.history.loss,
                     trainingAccuracy: history.history.acc,
                     testLoss: lossTensor.dataSync(),
