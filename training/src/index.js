@@ -1,6 +1,7 @@
 const tf = require('@tensorflow/tfjs-node');
 const {createCnn} = require("./model");
 const logger = require("./logger");
+const {train, test} = require("./data");
 
 async function trainTestAndSave(train, test, activation, dropoutRate) {
     // const predictions = cnn.predict(xTest);
@@ -90,34 +91,36 @@ async function hyperParamTuning() {
 
     const result = [];
 
-    for (const activation of ['relu', 'leakyReLU', 'elu', 'tanh', 'sigmoid',]) {
+    for (const activation of ['relu', 'elu', 'tanh', 'sigmoid',]) {
         for (const dropoutRate of [0.2, 0.5, 0.8]) {
-            logger.info(`Starting with Activation: ${activation}, Dropout: ${dropoutRate}`);
+            for (const learningRate of [0.01, 0.001, 0.0001, 0.00001, 0.000001]) {
+                logger.info(`Starting with Activation: ${activation}, Dropout: ${dropoutRate}`);
 
-            const cnn = createCnn(activation, dropoutRate);
-            const history = await cnn.fit(
-                train.x,
-                train.y,
-                {
-                    epochs: 10,                                                  // Number of epochs
-                    batchSize: 32,                                              // Number of samples per gradient update
-                    callbacks: tf.callbacks.earlyStopping({monitor: 'acc', patience: 3})
-                }
-            );
+                const cnn = createCnn(activation, dropoutRate, learningRate);
+                const history = await cnn.fit(
+                    train.x,
+                    train.y,
+                    {
+                        epochs: 10,                                                  // Number of epochs
+                        batchSize: 32,                                              // Number of samples per gradient update
+                        callbacks: tf.callbacks.earlyStopping({monitor: 'acc', patience: 3})
+                    }
+                );
 
-            const [lossTensor, accuracyTensor] = cnn.evaluate(test.x, test.y);
+                const [lossTensor, accuracyTensor] = cnn.evaluate(test.x, test.y);
+                logger.info(`Activation: ${activation}, Dropout: ${dropoutRate}: ${accuracyTensor}`);
+                result.push({
+                        activation,
+                        dropoutRate,
+                        trainingLoss: history.history.loss,
+                        trainingAccuracy: history.history.acc,
+                        testLoss: lossTensor.dataSync(),
+                        testAccuracy: accuracyTensor.dataSync(),
+                    }
+                );
 
-            result.push({
-                    activation,
-                    dropoutRate,
-                    trainingLoss: history.history.loss,
-                    trainingAccuracy: history.history.acc,
-                    testLoss: lossTensor.dataSync(),
-                    testAccuracy: accuracyTensor.dataSync(),
-                }
-            );
-
-            await cnn.save(`file://${activation}-${dropoutRate}`);
+                await cnn.save(`file://${activation}-${dropoutRate}-${learningRate}`);
+            }
         }
     }
 

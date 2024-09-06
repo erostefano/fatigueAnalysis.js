@@ -1,6 +1,6 @@
 const tf = require('@tensorflow/tfjs-node');
 
-function createCnn(activation, dropoutRate) {
+function createCnn(activation, dropoutRate, learningRate) {
     const cnn = tf.sequential();
 
     // Input layer with shape for face close-ups
@@ -44,7 +44,7 @@ function createCnn(activation, dropoutRate) {
 
     // Compile the model
     cnn.compile({
-        optimizer: tf.train.adam(),
+        optimizer: tf.train.adam(learningRate),
         loss: 'categoricalCrossentropy',
         metrics: ['accuracy']
     });
