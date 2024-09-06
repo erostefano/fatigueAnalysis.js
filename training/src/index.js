@@ -122,7 +122,7 @@ async function hyperParamTuning() {
 
                 modelPerformances.push(performance);
 
-                await cnn.save(`file://${activation}-${dropoutRate}-${learningRate}`);
+                await cnn.save(`file://models/${activation}-${dropoutRate}-${learningRate}`);
             }
         }
     }
