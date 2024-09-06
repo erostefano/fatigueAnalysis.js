@@ -27,7 +27,7 @@ function getDataSet(label) {
 }
 
 function splitIntoTrainingData(data, label) {
-    const splitAtIndex = 1188; // 1188 is 66% of 1800
+    const splitAtIndex = 1089; // 1089 is 66% of 1650
 
     const images = data.images.slice(0, splitAtIndex);
     logger.info(`Total of ${label.label} training images`, images.length);
