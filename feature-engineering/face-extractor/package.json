@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "run": "node index.js"
+  },
+  "dependencies": {
+    "@mediapipe/face_detection": "^0.4.1646425229",
+    "@tensorflow-models/blazeface": "^0.1.0",
+    "@tensorflow/tfjs": "^4.21.0",
+    "@tensorflow/tfjs-node": "^4.21.0",
+    "canvas": "^2.11.2",
+    "face-api.js": "^0.22.2",
+    "sharp": "^0.33.5"
+  }
+}
