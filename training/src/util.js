@@ -41,4 +41,19 @@ function splitIntoTrainingData(data, label) {
     }
 }
 
-module.exports = {getDataSet, splitIntoTrainingData};
+function splitIntoTestData(data, label) {
+    const splitAtIndex = 1089; // 1089 is 66% of 1650
+
+    const images = data.images.slice(splitAtIndex);
+    logger.info(`Total of ${label.label} test images`, images.length);
+
+    const labels = data.labels.slice(splitAtIndex);
+    logger.info(`Total of ${label.label} test labels`, images.length);
+
+    return {
+        images,
+        labels
+    }
+}
+
+module.exports = {getDataSet, splitIntoTrainingData, splitIntoTestData};

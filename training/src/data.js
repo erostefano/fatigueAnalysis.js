@@ -1,4 +1,4 @@
-const {splitIntoTrainingData, getDataSet} = require("./util");
+const {splitIntoTrainingData, getDataSet, splitIntoTestData} = require("./util");
 const logger = require("./logger");
 const tf = require("@tensorflow/tfjs-node");
 const {eyesOpen, eyesClosed, yawning} = require("./labels");
@@ -17,4 +17,14 @@ logger.info('xTrain shape', xTrain.shape);
 const yTrain = tf.tensor2d(eyesOpenTraining.labels.concat(eyesClosedTraining.labels).concat(yawningTraining.labels), [xTrain.shape[0], 3]);
 logger.info('yTrain shape', yTrain.shape);
 
-module.exports = {train: {x: xTrain, y: yTrain}};
+const eyesOpenTest = splitIntoTestData(eyesOpenSet, eyesOpen);
+const eyesClosedTest = splitIntoTestData(eyesClosedSet, eyesClosed);
+const yawningTest = splitIntoTestData(yawningSet, yawning);
+
+const xTest = tf.stack(eyesOpenTest.images.concat(eyesClosedTest.images).concat(yawningTest.images));
+logger.info('xTrain shape', xTrain.shape);
+
+const yTest = tf.tensor2d(eyesOpenTest.labels.concat(eyesClosedTest.labels).concat(yawningTest.labels), [xTest.shape[0], 3]);
+logger.info('yTrain shape', yTrain.shape);
+
+module.exports = {train: {x: xTrain, y: yTrain}, test: {x: xTest, y: yTest}};
