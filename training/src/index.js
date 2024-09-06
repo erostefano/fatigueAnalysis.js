@@ -1,29 +1,8 @@
-// TODO: creating multiple models using different configs
-
 const tf = require('@tensorflow/tfjs-node');
-const {cnn} = require("./model");
+const {createCnn} = require("./model");
 const logger = require("./logger");
 
-logger.info('Start training');
-
-const {train, test} = require("./data");
-
-(async () => {
-    const history = await cnn.fit(train.x, train.y, {
-        epochs: 10,                                                  // Number of epochs
-        batchSize: 32,                                              // Number of samples per gradient update
-        callbacks: tf.callbacks.earlyStopping({monitor: 'acc', patience: 3})
-    });
-
-    logger.info('Training completed');
-
-    logger.info('Training loss', history.history.loss);
-    logger.info('Training accuracy', history.history.acc);
-
-    const [lossTensor, accuracyTensor] = cnn.evaluate(test.x, test.y);
-    logger.info('Test loss', lossTensor.dataSync());
-    logger.info('Test accuracy', accuracyTensor.dataSync());
-
+async function trainTestAndSave(train, test, activation, dropoutRate) {
     // const predictions = cnn.predict(xTest);
     // const predictedLabels = predictions.arraySync();
     //
@@ -104,4 +83,46 @@ const {train, test} = require("./data");
     // console.table(confusionMatrix)
 
     // await cnn.save('file://model');
-})();
+}
+
+async function hyperParamTuning() {
+    const {train, test} = require("./data");
+
+    const result = [];
+
+    for (const activation of ['relu', 'leakyReLU', 'elu', 'tanh', 'sigmoid',]) {
+        for (const dropoutRate of [0.2, 0.5, 0.8]) {
+            logger.info(`Starting with Activation: ${activation}, Dropout: ${dropoutRate}`);
+
+            const cnn = createCnn(activation, dropoutRate);
+            const history = await cnn.fit(
+                train.x,
+                train.y,
+                {
+                    epochs: 10,                                                  // Number of epochs
+                    batchSize: 32,                                              // Number of samples per gradient update
+                    callbacks: tf.callbacks.earlyStopping({monitor: 'acc', patience: 3})
+                }
+            );
+
+            const [lossTensor, accuracyTensor] = cnn.evaluate(test.x, test.y);
+
+            result.push({
+                    activation,
+                    dropoutRate,
+                    trainingLoss: history.history.loss,
+                    trainingAccuracy: history.history.acc,
+                    testLoss: lossTensor.dataSync(),
+                    testAccuracy: accuracyTensor.dataSync(),
+                }
+            );
+
+            await cnn.save(`file://${activation}-${dropoutRate}`);
+        }
+    }
+
+    logger.info(result);
+    console.table(result);
+}
+
+hyperParamTuning()
