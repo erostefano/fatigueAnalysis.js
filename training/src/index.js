@@ -127,7 +127,7 @@ async function hyperParamTuning() {
         }
     }
 
-    logger.info(modelPerformances);
+    logger.info('Model Performances', JSON.stringify(modelPerformances));
     console.table(modelPerformances);
 }
 
