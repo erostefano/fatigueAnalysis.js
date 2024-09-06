@@ -1,7 +1,6 @@
 const tf = require('@tensorflow/tfjs-node');
 const {createCnn} = require("./model");
 const logger = require("./logger");
-const {train, test} = require("./data");
 
 async function trainTestAndSave(train, test, activation, dropoutRate) {
     // const predictions = cnn.predict(xTest);
@@ -89,7 +88,7 @@ async function trainTestAndSave(train, test, activation, dropoutRate) {
 async function hyperParamTuning() {
     const {train, test} = require("./data");
 
-    const result = [];
+    const modelPerformances = [];
 
     for (const activation of ['relu', 'elu', 'tanh', 'sigmoid',]) {
         for (const dropoutRate of [0.2, 0.5, 0.8]) {
@@ -108,24 +107,28 @@ async function hyperParamTuning() {
                 );
 
                 const [lossTensor, accuracyTensor] = cnn.evaluate(test.x, test.y);
-                logger.info(`Activation: ${activation}, Dropout: ${dropoutRate}: ${accuracyTensor}`);
-                result.push({
-                        activation,
-                        dropoutRate,
-                        trainingLoss: history.history.loss,
-                        trainingAccuracy: history.history.acc,
-                        testLoss: lossTensor.dataSync(),
-                        testAccuracy: accuracyTensor.dataSync(),
-                    }
-                );
+
+                const performance = {
+                    activation,
+                    dropoutRate,
+                    trainingLoss: history.history.loss,
+                    trainingAccuracy: history.history.acc,
+                    testLoss: lossTensor.dataSync(),
+                    testAccuracy: accuracyTensor.dataSync(),
+                };
+
+                logger.info('Model Performance', JSON.stringify(performance));
+                console.table(performance);
+
+                modelPerformances.push(performance);
 
                 await cnn.save(`file://${activation}-${dropoutRate}-${learningRate}`);
             }
         }
     }
 
-    logger.info(result);
-    console.table(result);
+    logger.info(modelPerformances);
+    console.table(modelPerformances);
 }
 
 hyperParamTuning()
