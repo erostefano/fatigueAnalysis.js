@@ -11,19 +11,19 @@ fatigueAnalysis.js, you can monitor the driver's alertness and ensure everyone s
 
 ### Labels
 
-- Eyes opened
-- Eyes closed
-- Yawning
+- **Eyes open:** Represents when the eyes are open and visible.
+- **Eyes closed:** Represents when the eyes closed.
+- **Yawning:** Represents when the mouth is covered by the hand.
 
-### Collection
+### Data Collection
 
-- Create for each label a video
-- Get each frame of the video
+- **Video Recording:** For each label a 30 seconds video has been recorded in car.
+- **Frame Extraction:** Every frame has been extracted. Note: Large dataset may cause git issues.
 
-### Preprocessing
+### Data Preprocessing
 
-- Use mediapipe face detection to detect the face
-- Save the face in a different file
+- **Face Extraction**: Using the Blazeface model from TensorFlow.js, the face has been extracted from each frame. The
+  image size has been reduced to max. 35 kB
 
 ## Training
 
