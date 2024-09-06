@@ -1,15 +1,15 @@
 const eyesOpen = {
-    labels: 'eyes-open',
+    label: 'eyes-open',
     encoding: [1, 0, 0]
 };
 
 const eyesClosed = {
-    labels: 'eyes-closed',
+    label: 'eyes-closed',
     encoding: [0, 1, 0]
 };
 
 const yawning = {
-    labels: 'yawning',
+    label: 'yawning',
     encoding: [0, 0, 1]
 };
 
