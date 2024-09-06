@@ -9,10 +9,9 @@ function loadImage(filePath) {
     return resizedImage.div(255);
 }
 
-function loadImagesFromFolder(folderPath, label) {
-    const files = fs.readdirSync(folderPath); // Get all files in the folder
-    const images = files.map(file => loadImage(path.join(folderPath, file))); // Load and preprocess each image
-    return {images, label};
+function loadImagesFromFolder(folderPath) {
+    const files = fs.readdirSync(folderPath);
+    return files.map(file => loadImage(path.join(folderPath, file)));
 }
 
 module.exports = {loadImagesFromFolder};
