@@ -69,6 +69,15 @@ The best model used the relu activation function, a dropout rate of 0.5, and a l
 training accuracy of 0.699 and a test accuracy of 0.794. The difference of -0.095 suggests that the model may be
 underfitted.
 
+The provided confusion matrix highlights the model's challenges in distinguishing between open and closed eyes.
+Specifically, the model frequently misclassifies closed eyes as open. However, it demonstrates strong performance in
+correctly identifying yawning instances.
+
+![confusion-matrix.png](assets%2Fconfusion-matrix.png)
+
+**Note:** This confusion matrix has been generated from an additional run. The train and test accuracy differ a lot. In
+summary, the confusion matrix from the previous run may be better.
+
 ### Transfer Learning
 
 // TODO: try it
