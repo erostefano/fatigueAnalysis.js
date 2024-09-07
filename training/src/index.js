@@ -7,11 +7,9 @@ async function hyperParamTuning() {
 
     const modelPerformances = [];
 
-    for (const activation of ['relu']) {
-        for (const dropoutRate of [0.5]) {
-            for (const learningRate of [0.000001]) {
-                logger.info(`Starting with Activation: ${activation}, Dropout: ${dropoutRate}, Learning Rate: ${learningRate}`);
-
+    for (const activation of ['relu', 'elu', 'tanh', 'sigmoid']) {
+        for (const dropoutRate of [0.2, 0.5, 0.8]) {
+            for (const learningRate of [0.01, 0.001, 0.0001, 0.00001, 0.000001]) {
                 const cnn = createCnn(activation, dropoutRate, learningRate);
                 const history = await cnn.fit(
                     train.x,
