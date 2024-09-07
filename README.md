@@ -54,11 +54,16 @@ The initial model had a suboptimal accuracy. To find the optimal configuration, 
 
 In this setup, 60 models have been trained, tested, and stored.
 
-**Note:** Git has limitations for storing large files. It is recommended to store models in an artifactory. For convenience, the best-performing model is stored in this repository.
+**Note:** Git has limitations for storing large files. It is recommended to store models in an artifactory. For
+convenience, the best-performing model is stored in this repository.
 
 ### Model Results
 
-// TODO: add table
+During training, each model result was logged. Due to issues with logging, the results had to be manually copied into
+results.json. The script analyze-results.js summarizes and sorts them by test accuracy. The following picture shows the
+first results.
+
+![model-results.png](assets%2Fmodel-results.png)
 
 ### Transfer Learning
 
