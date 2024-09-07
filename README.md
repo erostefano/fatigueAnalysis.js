@@ -18,7 +18,7 @@ fatigueAnalysis.js, you can monitor the driver's alertness and ensure everyone s
 ### Data Collection
 
 - **Video Recording:** For each label a 30 seconds video has been recorded in car.
-- **Frame Extraction:** Every frame has been extracted. Note: Large dataset may cause git issues.
+- **Frame Extraction:** Every frame has been extracted. Note: Large dataset may cause Git issues.
 
 ### Data Preprocessing
 
@@ -46,20 +46,23 @@ The model is compiled with the Adam optimizer, categorical crossentropy loss, an
 
 ### Hyperparameter Tuning
 
-The initial model had suboptimal accuracy. To find the optimal configuration, hyperparameter tuning was implemented.
+The initial model had a suboptimal accuracy. To find the optimal configuration, hyperparameter tuning was implemented:
 
 - **Activation Functions:** relu, elu, tanh, sigmoid
 - **Dropout Rates:** 0.2, 0.5, 0.8
 - **Learning Rates:** 0.01, 0.001, 0.0001, 0.00001, 0.000001
 
-In this combination 60 models have been trained and tested.
+In this setup, 60 models have been trained, tested, and stored.
 
-## Results
+**Note:** Git has limitations for storing large files. It is recommended to store models in an artifactory. For convenience, the best-performing model is stored in this repository.
+
+### Model Results
 
 // TODO: add table
 
-- Alternative: Using and existing model and calculating the points difference
-- Alternative: TransferLearning
+### Transfer Learning
+
+// TODO: try it
 
 ## Application
 
@@ -71,3 +74,8 @@ In this combination 60 models have been trained and tested.
 
 - Explain why the images of one person are enough (tailored, fast release)
 - Write about performance and user behaviour analysis
+
+## Critics
+
+- **Use Existing Model:** Face detection models return face points that can be used to calculate the distance between
+  the upper and lower eyelids, as well as the mouth. This may potentially be accurate enough to detect signs of fatigue.
