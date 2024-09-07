@@ -65,6 +65,10 @@ first results.
 
 ![model-results.png](assets%2Fmodel-results.png)
 
+The best model used the relu activation function, a dropout rate of 0.5, and a learning rate of 0.000001. It achieved a
+training accuracy of 0.699 and a test accuracy of 0.794. The difference of -0.095 suggests that the model may be
+underfitted.
+
 ### Transfer Learning
 
 // TODO: try it
