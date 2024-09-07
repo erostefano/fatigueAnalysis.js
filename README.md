@@ -27,7 +27,37 @@ fatigueAnalysis.js, you can monitor the driver's alertness and ensure everyone s
 
 ## Training
 
-- Load the faces and train the model
+### Convolutional Neural Network
+
+The model is a Convolutional Neural Network (CNN) built using TensorFlow.js for classifying close-up face images into
+three categories: Eyes open, closed, and yawning.
+
+- **Input Layer:** Accepts images of size 110x190 with 3 color channels (RGB).
+- **Convolutional Layers:**
+    - **First Convolutional Layer:** 32 filters, 3x3 kernel, specified activation function.
+    - **Second Convolutional Layer:** 64 filters, 3x3 kernel, specified activation function.
+- **Max-Pooling Layers:** Applied after each convolutional layer with a 2x2 pool size.
+- **Flatten Layer:** Converts the 2D feature maps into 1D.
+- **Dense Layer:** Fully connected layer with 256 units and specified activation function.
+- **Dropout Layer:** Applies dropout with a rate to prevent overfitting.
+- **Output Layer:** Produces three output units with softmax activation for multi-class classification.
+
+The model is compiled with the Adam optimizer, categorical crossentropy loss, and accuracy as the evaluation metric.
+
+### Hyperparameter Tuning
+
+The initial model had suboptimal accuracy. To find the optimal configuration, hyperparameter tuning was implemented.
+
+- **Activation Functions:** `relu`, `elu`, `tanh`, `sigmoid`
+- **Dropout Rates:** 0.2, 0.5, 0.8
+- **Learning Rates:** 0.01, 0.001, 0.0001, 0.00001, 0.000001
+
+In this combination 60 models have been trained and tested.
+
+## Results
+
+// TODO: add table
+
 - Alternative: Using and existing model and calculating the points difference
 - Alternative: TransferLearning
 
