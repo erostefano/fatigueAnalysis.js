@@ -28,6 +28,8 @@ fatigueAnalysis.js, you can monitor the driver's alertness and ensure everyone s
 ## Training
 
 - Load the faces and train the model
+- Alternative: Using and existing model and calculating the points difference
+- Alternative: TransferLearning
 
 ## Application
 
