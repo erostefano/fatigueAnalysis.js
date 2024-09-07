@@ -48,7 +48,7 @@ The model is compiled with the Adam optimizer, categorical crossentropy loss, an
 
 The initial model had suboptimal accuracy. To find the optimal configuration, hyperparameter tuning was implemented.
 
-- **Activation Functions:** `relu`, `elu`, `tanh`, `sigmoid`
+- **Activation Functions:** relu, elu, tanh, sigmoid
 - **Dropout Rates:** 0.2, 0.5, 0.8
 - **Learning Rates:** 0.01, 0.001, 0.0001, 0.00001, 0.000001
 
