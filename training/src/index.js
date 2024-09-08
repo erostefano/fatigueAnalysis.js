@@ -34,7 +34,6 @@ async function hyperParamTuning() {
                 };
 
                 logger.info('Model Performance', JSON.stringify(performance));
-                console.table(performance);
 
                 modelPerformances.push(performance);
 
@@ -100,7 +99,6 @@ async function hyperParamTuning() {
                     }
                 );
 
-                console.table(confusionMatrix)
                 logger.info('Confusion Matrix', JSON.stringify(confusionMatrix))
 
                 await cnn.save(`file://models/${activation}-${dropoutRate}-${learningRate}`);
@@ -109,7 +107,6 @@ async function hyperParamTuning() {
     }
 
     logger.info('Model Performances', JSON.stringify(modelPerformances));
-    console.table(modelPerformances);
 }
 
 hyperParamTuning()
