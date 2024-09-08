@@ -118,9 +118,14 @@ Overall, the accuracy is not satisfactory for the use case. To improve it, more 
 Due to performance limitations, this approach won't be feasible. Instead, alternative transfer learning solutions should
 be explored.
 
-### Transfer Learning On Face Points
+### Transfer Learning on Face Landmarks
 
-// TODO:
+Due to limited time, this transfer learning approach is not implemented - yet. Instead, it is outlined as follows:
+
+- **Feature Extraction:** Use a model with a webcam to extract face landmarks and label the data.
+- **Training:** Train a neural network on the labeled face landmarks.
+- **Benefits:** This approach requires less computational power, enabling the use of much more data without
+  significantly increasing the computational load.
 
 ## Application
 
