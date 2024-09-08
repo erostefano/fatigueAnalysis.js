@@ -59,6 +59,8 @@ convenience, the best-performing model is stored in this repository.
 
 ### Model Results
 
+// TODO:
+
 During training, each model result was logged. Due to issues with logging, the results had to be manually copied into
 results.json. The script analyze-results.js summarizes and sorts them by test accuracy. The following picture shows the
 first results.
@@ -97,3 +99,6 @@ summary, the confusion matrix from the previous run may be better.
 
 - **Use Existing Model:** Face detection models return face points that can be used to calculate the distance between
   the upper and lower eyelids, as well as the mouth. This may potentially be accurate enough to detect signs of fatigue.
+- **Randomize Pictures:** Even though the video captures multiple poses and directions, it is still necessary to
+  randomize the pictures. For example, the last second of the video might show the face consistently facing the phone
+  while trying to find the stop button.
