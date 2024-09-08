@@ -90,7 +90,29 @@ as eyesClosed, which renders the model unsuitable.
 }
 ```
 
-"tanh","dropoutRate":0.5,"learningRate":"0.0001"
+Therefore, the best model is the one at index 3. It has the most balanced confusion matrix and uses the tanh activation
+function, a dropout rate of 0.5, and a learning rate of 0.0001. Although it is clearly overfitted, it demonstrates more
+balanced classification performance.
+
+```
+{
+  "eyesOpen": {
+    "eyesOpen": 325,
+    "eyesClosed": 236,
+    "yawning": 0
+  },
+  "eyesClosed": {
+    "eyesOpen": 176,
+    "eyesClosed": 307,
+    "yawning": 78
+  },
+  "yawning": {
+    "eyesOpen": 0,
+    "eyesClosed": 0,
+    "yawning": 561
+  }
+}
+```
 
 ### Transfer Learning
 
