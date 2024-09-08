@@ -117,9 +117,9 @@ balanced classification performance.
 Overall, the accuracy is not satisfactory for the use case. Therefore, the next approach will be to try transfer
 learning.
 
-### Transfer Learning
+### Transfer Learning On Face Points
 
-// TODO: try it
+// TODO:
 
 ## Application
 
@@ -134,6 +134,8 @@ learning.
 
 ## Critics
 
+- **Transfer Learning:** By definition, this process is part of transfer learning since BlazeFace has been used to
+  extract the face.
 - **Use Existing Model:** Face detection models return face points that can be used to calculate the distance between
   the upper and lower eyelids, as well as the mouth. This may potentially be accurate enough to detect signs of fatigue.
 - **Randomize Pictures:** Even though the video captures multiple poses and directions, it is still necessary to
