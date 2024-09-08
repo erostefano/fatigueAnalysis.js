@@ -59,26 +59,38 @@ convenience, the best-performing model is stored in this repository.
 
 ### Model Results
 
-// TODO:
-
-During training, each model result was logged. Due to issues with logging, the results had to be manually copied into
-results.json. The script analyze-results.js summarizes and sorts them by test accuracy. The following picture shows the
-first results.
+During training, each model result has been logged. The script analyze-logs.js summarizes and sorts them by test
+accuracy. The following picture shows the first 20 results:
 
 ![model-results.png](assets%2Fmodel-results.png)
 
-The best model used the relu activation function, a dropout rate of 0.5, and a learning rate of 0.000001. It achieved a
-training accuracy of 0.699 and a test accuracy of 0.794. The difference of -0.095 suggests that the model may be
-underfitted.
+At first glance, the model with the tanh activation function, a dropout rate of 0.2, and a learning rate of 0.000001
+appears to be the best choice, as it achieved a test accuracy of 76.9% and shows slight overfitting.
 
-The provided confusion matrix highlights the model's challenges in distinguishing between open and closed eyes.
-Specifically, the model frequently misclassifies closed eyes as open. However, it demonstrates strong performance in
-correctly identifying yawning instances.
+However, a closer examination of the confusion matrix reveals that the eyesOpen label has been frequently misclassified
+as eyesClosed, which renders the model unsuitable.
 
-![confusion-matrix.png](assets%2Fconfusion-matrix.png)
+```
+{
+  "eyesOpen": {
+    "eyesOpen": 273,
+    "eyesClosed": 288,
+    "yawning": 0
+  },
+  "eyesClosed": {
+    "eyesOpen": 47,
+    "eyesClosed": 460,
+    "yawning": 54
+  },
+  "yawning": {
+    "eyesOpen": 0,
+    "eyesClosed": 0,
+    "yawning": 561
+  }
+}
+```
 
-**Note:** This confusion matrix has been generated from an additional run. The train and test accuracy differ a lot. In
-summary, the confusion matrix from the previous run may be better.
+"tanh","dropoutRate":0.5,"learningRate":"0.0001"
 
 ### Transfer Learning
 
