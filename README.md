@@ -114,8 +114,9 @@ balanced classification performance.
 }
 ```
 
-Overall, the accuracy is not satisfactory for the use case. Therefore, the next approach will be to try transfer
-learning.
+Overall, the accuracy is not satisfactory for the use case. To improve it, more data and parameter tuning are needed.
+Due to performance limitations, this approach won't be feasible. Instead, alternative transfer learning solutions should
+be explored.
 
 ### Transfer Learning On Face Points
 
