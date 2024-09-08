@@ -1,8 +1,13 @@
 const fs = require('fs');
 
-const data = fs.readFileSync('results.json', 'utf8');
+const data = fs.readFileSync('../logs.txt', 'utf8');
 
-const results = JSON.parse(data)
+const performances = data.split('\n')
+    .filter(line => line.includes('Model Performance'))
+    .map(line => JSON.parse(line.substring(line.indexOf('{'))));
+
+
+const results = performances
     .map(result => {
             return {
                 activation: result.activation,
