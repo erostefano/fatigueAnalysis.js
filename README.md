@@ -114,6 +114,9 @@ balanced classification performance.
 }
 ```
 
+Overall, the accuracy is not satisfactory for the use case. Therefore, the next approach will be to try transfer
+learning.
+
 ### Transfer Learning
 
 // TODO: try it
