@@ -68,17 +68,17 @@ function App() {
         }
     };
 
+    setInterval(captureAndProcess, 1)
+
     return (
         <div className="App">
             <h2>Webcam Capture</h2>
             <Webcam
-                audio={false} // Disable audio
                 ref={webcamRef} // Attach the reference
                 screenshotFormat="image/png" // Screenshot format
                 width={320} // Set width
                 height={240} // Set height
             />
-            <button onClick={captureAndProcess}>Capture and Extract Face</button>
             {faceImage && (
                 <div>
                     <h3>Detected Face</h3>
