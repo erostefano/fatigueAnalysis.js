@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>fatiqueAnalysis.js</title>
+    <title>fatigueAnalysis.js</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -76,10 +76,10 @@
             const normalizedImage = resizedImage.div(255).expandDims(0); // Normalize and add batch dimension
 
             // Predict with the second model
-            const fatiquePrediction = await secondModel.predict(normalizedImage).data();
-            document.getElementById('predictionEyesOpen').textContent = `Eyes Open: ${fatiquePrediction[0].toFixed(2)}`; // Adjust this based on your model's output
-            document.getElementById('predictionEyesClosed').textContent = `Eyes Closed: ${fatiquePrediction[1].toFixed(2)}`; // Adjust this based on your model's output
-            document.getElementById('predictionYawning').textContent = `Yawning: ${fatiquePrediction[2].toFixed(2)}`; // Adjust this based on your model's output
+            const fatiguePrediction = await secondModel.predict(normalizedImage).data();
+            document.getElementById('predictionEyesOpen').textContent = `Eyes Open: ${fatiguePrediction[0].toFixed(2)}`; // Adjust this based on your model's output
+            document.getElementById('predictionEyesClosed').textContent = `Eyes Closed: ${fatiguePrediction[1].toFixed(2)}`; // Adjust this based on your model's output
+            document.getElementById('predictionYawning').textContent = `Yawning: ${fatiguePrediction[2].toFixed(2)}`; // Adjust this based on your model's output
 
             // Clean up tensors
             imageTensor.dispose();
