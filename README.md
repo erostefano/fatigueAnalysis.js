@@ -120,6 +120,8 @@ be explored.
 A better solution is to use a model to extract face landmarks, as this approach does not require additional image
 processing.
 
+![face-landmarks.png](assets%2Fface-landmarks.png)
+
 - **Feature Extraction:** Use a model with a webcam to extract face landmarks and label the data.
 - **Training:** Train a neural network on the labeled face landmarks.
 - **Benefits:** This approach requires less computational power, enabling the use of much more data without
