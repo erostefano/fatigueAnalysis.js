@@ -126,6 +126,7 @@ Due to limited time, this transfer learning approach is not implemented - yet. I
 - **Training:** Train a neural network on the labeled face landmarks.
 - **Benefits:** This approach requires less computational power, enabling the use of much more data without
   significantly increasing the computational load.
+- **Size**: Approximately 8.7Kb, Source: https://codepen.io/mediapipe-preview/pen/OJBVQJm
 
 ## Application
 
