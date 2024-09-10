@@ -78,7 +78,7 @@
             const fatiquePrediction = await secondModel.predict(normalizedImage).data();
             document.getElementById('predictionEyesOpen').textContent = `Eyes Open: ${fatiquePrediction[0].toFixed(2)}`; // Adjust this based on your model's output
             document.getElementById('predictionEyesClosed').textContent = `Eyes Closed: ${fatiquePrediction[1].toFixed(2)}`; // Adjust this based on your model's output
-            document.getElementById('predictionYawning').textContent = `Eyes Yawning: ${fatiquePrediction[2].toFixed(2)}`; // Adjust this based on your model's output
+            document.getElementById('predictionYawning').textContent = `Yawning: ${fatiquePrediction[2].toFixed(2)}`; // Adjust this based on your model's output
 
             // Clean up tensors
             imageTensor.dispose();
