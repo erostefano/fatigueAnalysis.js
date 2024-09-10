@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlazeFace Video Stream and Prediction</title>
+    <title>fatiqueAnalysis.js</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,11 +16,13 @@
     </style>
 </head>
 <body>
-<h1>BlazeFace Face Detection and Prediction</h1>
+<h1>fatiqueAnalysis.js</h1>
 <video id="video" width="640" height="480" autoplay></video>
 <br>
 <img id="croppedFace" width="300" alt="Cropped Face">
-<p id="predictionResult"></p>
+<p id="predictionEyesOpen"></p>
+<p id="predictionEyesClosed"></p>
+<p id="predictionYawning"></p>
 
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
@@ -70,12 +72,13 @@
             // Prepare the image for the second model
             const imageTensor = tf.browser.fromPixels(canvas);
             const resizedImage = tf.image.resizeBilinear(imageTensor, [110, 190]); // Adjust size to match your model's input
-            const normalizedImage = resizedImage.div(255.0).expandDims(0); // Normalize and add batch dimension
+            const normalizedImage = resizedImage.div(255).expandDims(0); // Normalize and add batch dimension
 
             // Predict with the second model
             const fatiquePrediction = await secondModel.predict(normalizedImage).data();
-            const predictionResult = document.getElementById('predictionResult');
-            predictionResult.textContent = `Prediction: ${fatiquePrediction}`; // Adjust this based on your model's output
+            document.getElementById('predictionEyesOpen').textContent = `Eyes Open: ${fatiquePrediction[0].toFixed(2)}`; // Adjust this based on your model's output
+            document.getElementById('predictionEyesClosed').textContent = `Eyes Closed: ${fatiquePrediction[1].toFixed(2)}`; // Adjust this based on your model's output
+            document.getElementById('predictionYawning').textContent = `Eyes Yawning: ${fatiquePrediction[2].toFixed(2)}`; // Adjust this based on your model's output
 
             // Clean up tensors
             imageTensor.dispose();
