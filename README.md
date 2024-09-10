@@ -9,11 +9,8 @@ fatigueAnalysis.js, you can monitor the driver's alertness and ensure everyone s
 
 ## Feature Engineering
 
-### Labels
-
-- **Eyes open:** Represents when the eyes are open and visible.
-- **Eyes closed:** Represents when the eyes closed.
-- **Yawning:** Represents when the mouth is covered by the hand.
+The label **"Eyes open"** represents instances when the eyes are open. **"Eyes closed"** indicates when the
+eyes are closed. **"Yawning"** refers to situations where the mouth is covered by the hand.
 
 ### Data Collection
 
