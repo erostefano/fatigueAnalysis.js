@@ -129,9 +129,14 @@ Due to limited time, this transfer learning approach is not implemented - yet. I
 
 ## Application
 
-- **Webapp:** The webapp captures video stream from the camera.
-- **Preprocessing:** It uses the Blazeface model from feature engineering to detect and process faces.
-- **Prediction:** The trained model predicts outcomes based on the preprocessed image.
+The webapp captures the video stream from the camera, using the Blazeface model from feature engineering to detect and
+process faces during preprocessing. The trained model then predicts outcomes based on the preprocessed image.
+
+Overall, the performance is bad. Anyway, here are some working examples:
+
+- ![eyes-open.png](assets%2Feyes-open.png) – Image of eyes open.
+- ![eyes-closed.png](assets%2Feyes-closed.png) – Image of eyes closed.
+- ![yawning.png](assets%2Fyawning.png) – Image of yawning.
 
 ## Operation
 
