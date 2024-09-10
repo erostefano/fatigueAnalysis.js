@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
         }
+
         #video {
             border: 1px solid #ccc;
             margin-bottom: 10px;
@@ -19,7 +20,7 @@
 <h1>fatiqueAnalysis.js</h1>
 <video id="video" width="640" height="480" autoplay></video>
 <br>
-<img id="croppedFace" width="300" alt="Cropped Face">
+<img id="croppedFace" alt="Cropped Face">
 <p id="predictionEyesOpen"></p>
 <p id="predictionEyesClosed"></p>
 <p id="predictionYawning"></p>
@@ -54,11 +55,11 @@
 
         if (predictions.length > 0) {
             const [prediction] = predictions;
-            const { topLeft, bottomRight } = prediction;
-            const x = Math.max(topLeft[0], 0);
-            const y = Math.max(topLeft[1], 0);
-            const width = bottomRight[0] - x;
-            const height = bottomRight[1] - y;
+            const {topLeft, bottomRight} = prediction;
+            const x = Math.max(topLeft[0] + 10, 0);
+            const y = Math.max(topLeft[1] - 30, 0);
+            const width = bottomRight[0] - x - 10;
+            const height = bottomRight[1] - y + 40
 
             const canvas = document.createElement('canvas');
             canvas.width = width;
