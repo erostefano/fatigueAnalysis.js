@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fatigueAnalysis.js</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #video {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>fatiqueAnalysis.js</h1>
+<video id="video" width="640" height="480" autoplay></video>
+<br>
+<img id="croppedFace" alt="Cropped Face">
+<p id="predictionEyesOpen"></p>
+<p id="predictionEyesClosed"></p>
+<p id="predictionYawning"></p>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+<script>
+    let video;
+    let blazefaceModel;
+    let secondModel;
+
+    async function setupCamera() {
+        video = document.getElementById('video');
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true
+        });
+        video.srcObject = stream;
+        return new Promise(resolve => {
+            video.onloadedmetadata = () => {
+                resolve();
+            };
+        });
+    }
+
+    async function setupModels() {
+        blazefaceModel = await blazeface.load();
+        secondModel = await tf.loadLayersModel('tanh-0.5-0.0001/model.json'); // Load your second model here
+    }
+
+    async function detectFace() {
+        const predictions = await blazefaceModel.estimateFaces(video, false);
+
+        if (predictions.length > 0) {
+            const [prediction] = predictions;
+            const {topLeft, bottomRight} = prediction;
+            const x = Math.max(topLeft[0] + 10, 0);
+            const y = Math.max(topLeft[1] - 30, 0);
+            const width = bottomRight[0] - x - 10;
+            const height = bottomRight[1] - y + 30
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const context = canvas.getContext('2d');
+            context.drawImage(video, x, y, width, height, 0, 0, width, height);
+
+            const croppedFace = document.getElementById('croppedFace');
+            croppedFace.src = canvas.toDataURL();
+
+            // Prepare the image for the second model
+            const imageTensor = tf.browser.fromPixels(canvas);
+            const resizedImage = tf.image.resizeBilinear(imageTensor, [110, 190]); // Adjust size to match your model's input
+            const normalizedImage = resizedImage.div(255).expandDims(0); // Normalize and add batch dimension
+
+            // Predict with the second model
+            const fatiguePrediction = await secondModel.predict(normalizedImage).data();
+            document.getElementById('predictionEyesOpen').textContent = `Eyes Open: ${fatiguePrediction[0].toFixed(2)}`; // Adjust this based on your model's output
+            document.getElementById('predictionEyesClosed').textContent = `Eyes Closed: ${fatiguePrediction[1].toFixed(2)}`; // Adjust this based on your model's output
+            document.getElementById('predictionYawning').textContent = `Yawning: ${fatiguePrediction[2].toFixed(2)}`; // Adjust this based on your model's output
+
+            // Clean up tensors
+            imageTensor.dispose();
+            resizedImage.dispose();
+            normalizedImage.dispose();
+        }
+
+        requestAnimationFrame(detectFace);
+    }
+
+    async function main() {
+        await setupCamera();
+        await setupModels();
+        detectFace();
+    }
+
+    main();
+</script>
+</body>
+</html>
