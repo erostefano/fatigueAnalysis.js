@@ -115,14 +115,18 @@ Overall, the accuracy is not satisfactory for the use case. To improve it, more 
 Due to performance limitations, this approach won't be feasible. Instead, alternative transfer learning solutions should
 be explored.
 
-### Transfer Learning on Face Landmarks
+### Transfer Learning using Face Landmarks
 
-Due to limited time, this transfer learning approach is not implemented - yet. Instead, it is outlined as follows:
+A better solution is to use a model to extract face landmarks, as this approach does not require additional image
+processing.
 
 - **Feature Extraction:** Use a model with a webcam to extract face landmarks and label the data.
 - **Training:** Train a neural network on the labeled face landmarks.
 - **Benefits:** This approach requires less computational power, enabling the use of much more data without
   significantly increasing the computational load.
+
+Face landmarks typically occupy around 9 kB, which is about four times smaller than images. Additionally, they can be
+further reduced to include only the necessary features. For example, ears are not crucial for analyzing fatigue.
 
 ## Application
 
@@ -135,6 +139,10 @@ Overall, the performance is bad. Anyway, here are some working examples:
 - ![eyes-closed.png](assets%2Feyes-closed.png) – Image of eyes closed.
 - ![yawning.png](assets%2Fyawning.png) – Image of yawning.
 
+The application is stored [index.html](application%2Findex.html) and can be run simply by opening it in a browser. 
+
+**Note:**: Since the model and the application do not perform well, there was no deployment.
+
 ## Operation
 
 - Explain why the images of one person are enough (tailored, fast release)
@@ -142,10 +150,8 @@ Overall, the performance is bad. Anyway, here are some working examples:
 
 ## Critics
 
-- **Transfer Learning:** By definition, this process is part of transfer learning since BlazeFace has been used to
-  extract the face.
-- **Use Existing Model:** Face detection models return face points that can be used to calculate the distance between
-  the upper and lower eyelids, as well as the mouth. This may potentially be accurate enough to detect signs of fatigue.
+- **Calculation instead of Training:** Face landmarks provide precise and complete predictions, which can be used to
+  determine if the eyes are open.
 - **Randomize Pictures:** Even though the video captures multiple poses and directions, it is still necessary to
   randomize the pictures. For example, the last second of the video might show the face consistently facing the phone
   while trying to find the stop button.
