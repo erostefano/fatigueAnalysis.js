@@ -144,7 +144,7 @@ Overall, the performance is bad. Anyway, here are some working examples:
 
 The application is stored [index.html](application%2Findex.html) and can be run simply by opening it in a browser. 
 
-**Note:**: Since the model and the application do not perform well, there was no deployment.
+**Note:** Since the model and the application do not perform well, there was no deployment.
 
 ## Operation
 
