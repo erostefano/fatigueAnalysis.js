@@ -129,9 +129,9 @@ Due to limited time, this transfer learning approach is not implemented - yet. I
 
 ## Application
 
-- Use the video stream
-- Use mediapipe face detection to detect the face
-- Predict the face
+- **Webapp:** The webapp captures video stream from the camera.
+- **Preprocessing:** It uses the Blazeface model from feature engineering to detect and process faces.
+- **Prediction:** The trained model predicts outcomes based on the preprocessed image.
 
 ## Operation
 
