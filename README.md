@@ -131,7 +131,7 @@ processing.
 - **Training:** Train a neural network on the labeled face landmarks.
 - **Benefits:** This approach requires less computational power, enabling the use of much more data without
   significantly increasing the computational load.
-- **Size**: Approximately 8.7Kb, Source: https://codepen.io/mediapipe-preview/pen/OJBVQJm
+- **Size**: Approximately 8.7kB, Source: https://codepen.io/mediapipe-preview/pen/OJBVQJm
 
 Face landmarks typically occupy around 9 kB, which is about four times smaller than images. Additionally, they can be
 further reduced to include only the necessary features. For example, ears are not crucial for analyzing fatigue.
