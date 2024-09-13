@@ -24,6 +24,10 @@ eyes are closed. **"Yawning"** refers to situations where the mouth is covered b
 
 ## Training
 
+For image analysis, Convolutional Neural Networks (CNNs) are recommended. They excel in feature extraction and pattern
+recognition through their convolutional layers, making them ideal for tasks like image classification and object
+detection.
+
 ### Convolutional Neural Network
 
 The model is a Convolutional Neural Network (CNN) built using TensorFlow.js for classifying close-up face images into
