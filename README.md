@@ -148,8 +148,15 @@ The application is stored [index.html](application%2Findex.html) and can be run 
 
 ## Operation
 
-- Explain why the images of one person are enough (tailored, fast release)
-- Write about performance and user behaviour analysis
+The application and model run entirely in the browser. Aside from serving files, the server has no additional
+functionality. Therefore, user and performance analysis must be implemented in the browser.
+
+- **Data Collection**: In the early stage of the project, models are created for each customer. Once enough data is
+  collected, a global model can be introduced and shared.
+- **Measurements**: Use Google Analytics to gain insight into user behavior and track custom events such as logging.
+- **User Feedback**: Allow users to provide feedback and submit images.
+- **Model Updates**: As users may change their appearance, models need to be updated. Therefore, the application should
+  continuously gather data to track changes and update models accordingly.
 
 ## Critics
 
@@ -159,4 +166,5 @@ The application is stored [index.html](application%2Findex.html) and can be run 
   randomize the pictures. For example, the last second of the video might show the face consistently facing the phone
   while trying to find the stop button.
 - **Missing Seed:** No seed has been set, making the models non-reproducible.
-- **Testing:** There are no formal tests to confirm the functions. Everything has been tested manually through exploratory testing.
+- **Testing:** There are no formal tests to confirm the functions. Everything has been tested manually through
+  exploratory testing.
