@@ -142,7 +142,7 @@ Overall, the performance is bad. Anyway, here are some working examples:
 - ![eyes-closed.png](assets%2Feyes-closed.png)
 - ![yawning.png](assets%2Fyawning.png)
 
-The application is stored [index.html](application%2Findex.html) and can be run simply by opening it in a browser. 
+The application is stored [index.html](application%2Findex.html) and can be run simply by opening it in a browser.
 
 **Note:** Since the model and the application do not perform well, there was no deployment.
 
@@ -158,3 +158,5 @@ The application is stored [index.html](application%2Findex.html) and can be run 
 - **Randomize Pictures:** Even though the video captures multiple poses and directions, it is still necessary to
   randomize the pictures. For example, the last second of the video might show the face consistently facing the phone
   while trying to find the stop button.
+- **Missing Seed:** No seed has been set, making the models non-reproducible.
+- **Testing:** There are no formal tests to confirm the functions. Everything has been tested manually through exploratory testing.
