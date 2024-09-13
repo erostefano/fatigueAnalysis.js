@@ -43,9 +43,10 @@ The model is compiled with the Adam optimizer, categorical crossentropy loss, an
 
 ### Hyperparameter Tuning
 
-The initial model had a suboptimal accuracy. To find the optimal configuration, hyperparameter tuning was implemented:
+The initial model showed suboptimal accuracy. To improve performance, hyperparameter tuning was applied, as these
+parameters greatly influence model outcomes.
 
-- **Activation Functions:** relu, elu, tanh, sigmoid
+- **Activation Functions:** ReLU, ELU, tanh, sigmoid
 - **Dropout Rates:** 0.2, 0.5, 0.8
 - **Learning Rates:** 0.01, 0.001, 0.0001, 0.00001, 0.000001
 
@@ -153,7 +154,9 @@ functionality. Therefore, user and performance analysis must be implemented in t
 
 - **Data Collection**: In the early stage of the project, models are created for each customer. Once enough data is
   collected, a global model can be introduced and shared.
-- **Measurements**: Use Google Analytics to gain insight into user behavior and track custom events such as logging.
+- **Measurements**: Use Google Analytics to gather insights into user behavior, such as browser type, device, browser
+  version, location, session duration, retention and page views. Additionally, track custom events like user
+  interactions, clicks, form submissions, and logging events.
 - **User Feedback**: Allow users to provide feedback and submit images.
 - **Model Updates**: As users may change their appearance, models need to be updated. Therefore, the application should
   continuously gather data to track changes and update models accordingly.
