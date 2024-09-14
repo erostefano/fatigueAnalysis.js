@@ -169,6 +169,7 @@ functionality. Therefore, user and performance analysis must be implemented in t
 
 - **Calculation instead of Training:** Face landmarks provide precise and complete predictions, which can be used to
   determine if the eyes are open.
+- **Data Augmentation:** Because of performance issues there was no data augmentation.
 - **Randomize Pictures:** Even though the video captures multiple poses and directions, it is still necessary to
   randomize the pictures. For example, the last second of the video might show the face consistently facing the phone
   while trying to find the stop button.
