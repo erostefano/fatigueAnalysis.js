@@ -81,7 +81,7 @@ appears to be the best choice, as it achieved a test accuracy of 76.9% and shows
 However, a closer examination of the confusion matrix reveals that the eyesOpen label has been frequently misclassified
 as eyesClosed, which renders the model unsuitable.
 
-```
+```json
 {
   "eyesOpen": {
     "eyesOpen": 273,
@@ -105,7 +105,7 @@ Therefore, the best model is the one at index 3. It has the most balanced confus
 function, a dropout rate of 0.5, and a learning rate of 0.0001. Although it is clearly overfitted, it demonstrates more
 balanced classification performance.
 
-```
+```json
 {
   "eyesOpen": {
     "eyesOpen": 325,
