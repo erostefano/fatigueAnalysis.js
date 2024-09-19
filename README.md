@@ -152,9 +152,9 @@ process faces during preprocessing. The trained model then predicts outcomes bas
 
 Overall, the performance is bad. Anyway, here are some working examples:
 
-- ![Prediction: Eyes open](assets%2Feyes-open.png)
-- ![Prediction: Eyes closed](assets%2Feyes-closed.png)
-- ![Prediction: Yawning](assets%2Fyawning.png)
+- ![Prediction: Eyes open](assets%2Fprediction-eyes-open.png)
+- ![Prediction: Eyes closed](assets%2Fprediction-eyes-closed.png)
+- ![Prediction: Yawning](assets%2Fprediction-yawning.png)
 
 The application is stored [index.html](application%2Findex.html) and can be run simply by opening it in a browser.
 
