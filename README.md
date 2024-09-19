@@ -186,7 +186,7 @@ functionality. Therefore, user and performance analysis must be implemented in t
 - **Testing:** There are no formal tests to confirm the functions. Everything has been tested manually through
   exploratory testing.
 
-## Summary
+## Learning and Outlook
 
 - **Model runs in the browser:** It is absolutely possible to run one or multiple models in the browser, though there
   may be some performance limitations at times.
