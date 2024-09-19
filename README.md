@@ -185,3 +185,10 @@ functionality. Therefore, user and performance analysis must be implemented in t
 - **Missing Seed:** No seed has been set, making the models non-reproducible.
 - **Testing:** There are no formal tests to confirm the functions. Everything has been tested manually through
   exploratory testing.
+
+## Summary
+
+- **Model runs in the browser:** It is absolutely possible to run one or multiple models in the browser, though there
+  may be some performance limitations at times.
+- **Train a model in the browser:** It's also worth exploring how well a model can be trained in the browser while
+  keeping the user experience smooth. This will be analyzed in a future project.
