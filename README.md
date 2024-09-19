@@ -30,9 +30,7 @@ eyes are closed. **"Yawning"** refers to situations where the mouth is covered b
 
 - **Face Extraction**: Using the Blazeface model from TensorFlow.js, the face has been extracted from each frame. The
   image size has been reduced to max. 35 kB
-- ![Face Eyes open](assets%2Fface-eyes-open.png)
-- ![Face Eyes closed](assets%2Fface-eyes-closed.jpg)
-- ![Face Yawning](assets%2Fface-yawning.png)
+- ![Face Eyes open](assets%2Fface-eyes-open.png) ![Face Eyes closed](assets%2Fface-eyes-closed.jpg) ![Face Yawning](assets%2Fface-yawning.png)
 
 ## Training
 
