@@ -73,7 +73,7 @@ convenience, the best-performing model is stored in this repository.
 During training, each model result has been logged. The script analyze-logs.js summarizes and sorts them by test
 accuracy. The following picture shows the first 20 results:
 
-![model-results.png](assets%2Fmodel-results.png)
+![Model Results](assets%2Fmodel-results.png)
 
 At first glance, the model with the tanh activation function, a dropout rate of 0.2, and a learning rate of 0.000001
 appears to be the best choice, as it achieved a test accuracy of 76.9% and shows slight overfitting.
@@ -134,7 +134,7 @@ be explored.
 A better solution is to use a model to extract face landmarks, as this approach does not require additional image
 processing.
 
-![face-landmarks.png](assets%2Fface-landmarks.png)
+![Face Landmarks](assets%2Fface-landmarks.png)
 
 - **Feature Extraction:** Use a model with a webcam to extract face landmarks and label the data.
 - **Training:** Train a neural network on the labeled face landmarks.
@@ -152,9 +152,9 @@ process faces during preprocessing. The trained model then predicts outcomes bas
 
 Overall, the performance is bad. Anyway, here are some working examples:
 
-- ![eyes-open.png](assets%2Feyes-open.png)
-- ![eyes-closed.png](assets%2Feyes-closed.png)
-- ![yawning.png](assets%2Fyawning.png)
+- ![Prediction: Eyes open](assets%2Feyes-open.png)
+- ![Prediction: Eyes closed](assets%2Feyes-closed.png)
+- ![Prediction: Yawning](assets%2Fyawning.png)
 
 The application is stored [index.html](application%2Findex.html) and can be run simply by opening it in a browser.
 
