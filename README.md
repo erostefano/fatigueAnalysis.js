@@ -1,11 +1,20 @@
-# fatigueAnalysis.js
+# Model runs in the browser
 
-fatigueAnalysis.js is a TensorFlow-powered JavaScript project designed to detect fatigue in real-time through an
-integrated webcam. By training and utilizing machine learning models, the system accurately analyzes facial features to
-determine tiredness, offering valuable insights for health and safety.
+Browser apps offer a user-friendly experience without the need for installation, making them accessible on a wide range
+of devices. They provide instant updates and can be tailored to your needs through extensions. Smart caching ensures
+that the browsing experience remains quick and responsive.
+
+High performance is achieved by running models directly on your device, removing the need for powerful servers. This
+method supports endless scalability, allowing apps to manage growing demands efficiently while maintaining speed.
+
+## Use Case
 
 Imagine a long road trip with friends and family—wouldn't it be nice to check if the driver is okay? With
 fatigueAnalysis.js, you can monitor the driver's alertness and ensure everyone stays safe on the road.
+
+This project is designed to detect fatigue in real-time through an integrated webcam. By training and utilizing machine
+learning models, the system accurately analyzes facial features to determine tiredness, offering valuable insights for
+health and safety.
 
 ## Feature Engineering
 
