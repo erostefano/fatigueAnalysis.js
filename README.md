@@ -24,12 +24,13 @@ eyes are closed. **"Yawning"** refers to situations where the mouth is covered b
 ### Data Collection
 
 - **Video Recording:** For each label a 30 seconds video has been recorded in car.
-- **Frame Extraction:** Every frame has been extracted. Note: Large dataset may cause Git issues.
+- **Frame Extraction:** Every frame has been extracted. Approximately an image has a size of 340kB Note: Large dataset
+  may cause Git issues.
 
 ### Data Preprocessing
 
 - **Face Extraction**: Using the Blazeface model from TensorFlow.js, the face has been extracted from each frame. The
-  image size has been reduced to max. 35 kB
+  image size has been reduced to approximately 35 kB
 - ![Face Eyes open](assets%2Fface-eyes-open.png) ![Face Eyes closed](assets%2Fface-eyes-closed.jpg) ![Face Yawning](assets%2Fface-yawning.png)
 
 ## Training
@@ -141,7 +142,7 @@ processing.
 - **Training:** Train a neural network on the labeled face landmarks.
 - **Benefits:** This approach requires less computational power, enabling the use of much more data without
   significantly increasing the computational load.
-- **Size**: Approximately 8.7kB, Source: https://codepen.io/mediapipe-preview/pen/OJBVQJm
+- **Size**: Approximately 9kB, Source: https://codepen.io/mediapipe-preview/pen/OJBVQJm
 
 Face landmarks typically occupy around 9 kB, which is about four times smaller than images. Additionally, they can be
 further reduced to include only the necessary features. For example, ears are not crucial for analyzing fatigue.
