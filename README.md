@@ -192,5 +192,7 @@ functionality. Therefore, user and performance analysis must be implemented in t
 
 - **Model runs in the browser:** It is absolutely possible to run one or multiple models in the browser, though there
   may be some performance limitations at times.
+- **Same environments:** The data and application must come from the same environment.
+- **Light weight:** Don't force bad approach, go for lightweight solutions.
 - **Train a model in the browser:** It's also worth exploring how well a model can be trained in the browser while
   keeping the user experience smooth. This will be analyzed in a future project.
